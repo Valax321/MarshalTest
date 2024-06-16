@@ -1,0 +1,6 @@
+.vs/
+.idea/
+Binaries/
+Intermediate/
+
+.DS_Store

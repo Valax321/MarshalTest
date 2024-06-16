@@ -1,0 +1,58 @@
+{
+    "version": 5,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 25,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "all-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/Intermediate/native/${presetName}",
+            "toolchainFile": "${sourceDir}/ThirdParty/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
+            }
+        },
+        {
+            "name": "macos-arm64-base",
+            "inherits": "all-base",
+            "hidden": true
+        },
+        {
+            "name": "macos-arm64-debug",
+            "displayName": "macOS arm64 Debug",
+            "inherits": "macos-arm64-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/Binaries/Debug/net8.0",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/Binaries/Debug/net8.0"
+            }
+        },
+        {
+            "name": "macos-arm64-release",
+            "displayName": "macOS arm64 Release",
+            "inherits": "macos-arm64-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "RADISH_ENABLE_ASSERTIONS": false,
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/Binaries/Release/net8.0",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/Binaries/Release/net8.0"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "macos-arm64-debug",
+            "displayName": "macOS arm64 Debug",
+            "configurePreset": "macos-arm64-debug"
+        },
+        {
+            "name": "macos-arm64-release",
+            "displayName": "macOS arm64 Release",
+            "configurePreset": "macos-arm64-release"
+        }
+    ]
+}

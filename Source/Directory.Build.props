@@ -1,0 +1,12 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Audrey Castillo</Authors>
+        <Company>Audrey Castillo</Company>
+        <Product>Marshal Test</Product>
+        <Copyright>Copyright © Audrey Castillo. All rights reserved.</Copyright>
+        <RootNamespace>Radish</RootNamespace>
+        <BaseOutputPath>$(SolutionDir)Binaries</BaseOutputPath>
+        <BaseIntermediateOutputPath>..\..\Intermediate\dotnet\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
+    </PropertyGroup>
+</Project>
