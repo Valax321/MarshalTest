@@ -23,12 +23,10 @@ public static partial class MarshalNative
 
         if (str.Length == 0)
             return string.Empty;
-        
-        var dst = ArrayPool<byte>.Shared.Rent(Encoding.UTF8.GetByteCount(str) + 1);
-        Array.Clear(dst);
+
+        using var dst = ArrayPool<byte>.Shared.Rent(Encoding.UTF8.GetByteCount(str) + 1, true);
         _StringReverse(str, dst);
         var result = Encoding.UTF8.GetString(dst);
-        ArrayPool<byte>.Shared.Return(dst);
         return result;
     }
 

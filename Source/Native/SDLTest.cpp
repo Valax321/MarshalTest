@@ -2,6 +2,8 @@
 
 #include <cstdio>
 
+// Yes, printf will happily interop with Console.Write
+
 void MRSH_DoSomethingWithWindow(SDL_Window* wnd) {
     if (wnd == nullptr)
         return;
